@@ -23,9 +23,12 @@ require "sender"
 require "shipping"
 require "day_of_year"
 require "pre_approval"
+require "pre_approval_payment"
+require "pre_approval_search_result"
 require "transaction"
 require "notification"
 require "query"
+require "query_pre_approval"
 
 # Error classes
 require "errors/unauthorized"

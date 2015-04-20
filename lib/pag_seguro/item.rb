@@ -18,8 +18,8 @@ module PagSeguro
       @description = attributes[:description]
       @amount = attributes[:amount]
       @quantity = attributes[:quantity]
-      @shipping_cost = attributes[:shipping_cost]
-      @weight = attributes[:weight]
+      @shipping_cost = attributes[:shipping_cost] if attributes[:shipping_cost]
+      @weight = attributes[:weight] if attributes[:weight]
     end
 
     def description

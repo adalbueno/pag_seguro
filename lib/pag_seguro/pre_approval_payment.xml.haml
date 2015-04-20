@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+%payment
+  %items
+    - items.each do |item|
+      %item
+        %id= item.id
+        %description&= item.description
+        %amount= item.amount
+        %quantity= item.quantity
+
+  %reference= payment.id
+  %preApprovalCode= payment.preApprovalCode

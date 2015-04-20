@@ -20,7 +20,8 @@ module PagSeguro
 
     def self.search_params(email, token, options={})
       params = {email: email, token: token}
-      params[:initialDate], params[:finalDate] = parse_dates(options)
+      params[:initialDate], params[:finalDate] = parse_dates(options) if options[:initial_date] && options[:final_date]
+      params[:reference] = options[:reference] if options[:reference]
       params[:page] = options[:page] if options[:page]
       params[:maxPageResults] = options[:max_page_results] if options[:max_page_results]
       params

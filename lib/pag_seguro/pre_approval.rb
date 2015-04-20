@@ -7,7 +7,7 @@ module PagSeguro
     DAYS_OF_WEEK = %w(monday tuesday wednesday thursday friday saturday sunday)
     DATE_RANGE = 17856.hours
 
-    attr_accessor :name, :details, :amount_per_payment, :period,
+    attr_accessor :id, :name, :details, :amount_per_payment, :period,
                   :day_of_week, :day_of_month, :day_of_year, :initial_date,
                   :final_date, :max_amount_per_period, :max_total_amount,
                   :review_URL
@@ -25,6 +25,7 @@ module PagSeguro
     validates :max_total_amount, pagseguro_decimal: true
 
     def initialize(options = {})
+      @id = options[:id] if options[:id]
       @name = options[:name]
       @details = options[:details]
       @amount_per_payment = options[:amount_per_payment]
@@ -37,6 +38,10 @@ module PagSeguro
       @max_amount_per_period = options[:max_amount_per_period]
       @max_total_amount = options[:max_total_amount]
       @review_URL = options[:review_URL]
+    end
+
+    def self.pre_approvals_url
+      PagSeguro::Url.api_url("/pre-approvals")
     end
 
     def period
